@@ -40,13 +40,26 @@ class StoryBrain {
   get getChoice2 => _storyData[_storyNumber].choice2;
 
   void nextStory(int userChoiceNumber) {
-    if(userChoiceNumber == 1) {
-      _storyNumber = 2;
+    //todo : simplify code
+    if(_storyNumber == 0) {
+      if(userChoiceNumber == 1) {
+        _storyNumber = 2;
+      } else {
+        _storyNumber = 1;
+      }
+    } else if(_storyNumber == 1) {
+      if(userChoiceNumber == 1) {
+        _storyNumber = 2;
+      } else {
+        _storyNumber = 3;
+      }
+    } else if(_storyNumber ==2) {
+      if(userChoiceNumber == 1) {
+        _storyNumber = 5;
+      } else {
+        _storyNumber = 4;
+      }
     } else {
-      _storyNumber = 1;
-    }
-
-    if(_storyNumber >= 3) {
       restart();
     }
   }
