@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'story.dart';
 
 class StoryBrain {
@@ -40,27 +42,19 @@ class StoryBrain {
   get getChoice2 => _storyData[_storyNumber].choice2;
 
   void nextStory(int userChoiceNumber) {
-    //todo : simplify code
-    if(_storyNumber == 0) {
-      if(userChoiceNumber == 1) {
-        _storyNumber = 2;
-      } else {
-        _storyNumber = 1;
-      }
-    } else if(_storyNumber == 1) {
-      if(userChoiceNumber == 1) {
-        _storyNumber = 2;
-      } else {
-        _storyNumber = 3;
-      }
-    } else if(_storyNumber ==2) {
-      if(userChoiceNumber == 1) {
-        _storyNumber = 5;
-      } else {
-        _storyNumber = 4;
-      }
+  switch(_storyNumber) {
+    case 0: _updateStoryNumber(userChoiceNumber: userChoiceNumber, valueForFirstChoice: 2, valueFOrSecondChoice: 1); break;
+    case 1: _updateStoryNumber(userChoiceNumber: userChoiceNumber, valueForFirstChoice: 2, valueFOrSecondChoice: 3); break;
+    case 2: _updateStoryNumber(userChoiceNumber: userChoiceNumber, valueForFirstChoice: 5, valueFOrSecondChoice: 4); break;
+    default : restart();
+    }
+  }
+
+  void _updateStoryNumber({@required int userChoiceNumber, @required int valueForFirstChoice, @required int valueFOrSecondChoice}) {
+    if(userChoiceNumber == 1) {
+      _storyNumber = valueForFirstChoice;
     } else {
-      restart();
+      _storyNumber = valueFOrSecondChoice;
     }
   }
 
