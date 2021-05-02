@@ -36,60 +36,37 @@ class _StoryPageState extends State<StoryPage> {
         padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
         constraints: BoxConstraints.expand(),
         child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Expanded(
-                flex: 12,
-                child: Center(
-                  child: Text(
-                    _storyBrain.getStory,
-                    style: TextStyle(
-                      fontSize: 25.0,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Expanded(
+                  flex: 12,
+                  child: Center(
+                    child: Text(
+                      _storyBrain.getStory,
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: 25.0,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                flex: 2,
-                child: TextButton(
-                  onPressed: () {
-                    //Choice 1 made by user.
-                    setState(() {
-                      _storyBrain.nextStory(1);
-                    });
-                  },
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.red,
-                  ),
-                  child: Text(
-                    _storyBrain.getChoice1,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              Expanded(
-                flex: 2,
-                child: Visibility(
-                  visible: _storyBrain.buttonShouldBeVisible(),
+                Expanded(
+                  flex: 2,
                   child: TextButton(
                     onPressed: () {
-                      //Choice 2 made by user.
+                      //Choice 1 made by user.
                       setState(() {
-                        _storyBrain.nextStory(2);
+                        _storyBrain.nextStory(1);
                       });
                     },
                     style: TextButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Colors.red,
                     ),
                     child: Text(
-                      _storyBrain.getChoice2,
+                      _storyBrain.getChoice1,
                       style: TextStyle(
                         fontSize: 20.0,
                         color: Colors.white,
@@ -97,8 +74,35 @@ class _StoryPageState extends State<StoryPage> {
                     ),
                   ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: 20.0,
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Visibility(
+                    visible: _storyBrain.buttonShouldBeVisible(),
+                    child: TextButton(
+                      onPressed: () {
+                        //Choice 2 made by user.
+                        setState(() {
+                          _storyBrain.nextStory(2);
+                        });
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                      ),
+                      child: Text(
+                        _storyBrain.getChoice2,
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
