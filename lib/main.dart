@@ -67,6 +67,7 @@ class _StoryPageState extends State<StoryPage> {
                     ),
                     child: Text(
                       _storyBrain.getChoice1,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 20.0,
                         color: Colors.white,
@@ -93,6 +94,7 @@ class _StoryPageState extends State<StoryPage> {
                       ),
                       child: Text(
                         _storyBrain.getChoice2,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20.0,
                           color: Colors.white,
@@ -109,5 +111,3 @@ class _StoryPageState extends State<StoryPage> {
     );
   }
 }
-
-//TODO: Step 29 - Run the app and test it against the Story Outline to make sure you've completed all the steps. The code for the completed app can be found here: https://github.com/londonappbrewery/destini-challenge-completed/
